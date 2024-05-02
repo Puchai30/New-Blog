@@ -15,6 +15,7 @@
    <h1><a href="blog/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
 
    <div>
+    <p>published at{{ $blog->date }}</p>
     <p>{{ $blog->intro }}</p>
    </div>
 

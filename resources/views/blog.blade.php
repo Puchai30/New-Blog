@@ -12,6 +12,7 @@
 <body>
 
     <h1>{{ $blogeer->title }}</h1>
+    <p>published at{{ $blogeer->date }}</p>
     <body>
         {{ $blogeer->body }}
     </body>
