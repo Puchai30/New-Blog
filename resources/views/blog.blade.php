@@ -11,7 +11,10 @@
 
 <body>
 
-    {{ $blogeer }}
+    <h1>{{ $blogeer->title }}</h1>
+    <body>
+        {{ $blogeer->body }}
+    </body>
 
     <hr>
     <a href="/">go back</a>

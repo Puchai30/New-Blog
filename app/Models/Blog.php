@@ -22,27 +22,31 @@ class Blog
 
     public static function all()
     {
-        $files = File::files(resource_path("blogger"));
-        $blogs = [];
-        foreach ($files as $file){
-            $obj = YamlFrontMatter::parseFile($file);
-            $blog = new Blog($obj->title, $obj->slug, $obj->intro, $obj->body());
-            $blogs[]=$blog;
-        }
 
-        return $blogs;
+        return collect(File::files(resource_path("blogger")))
+            ->map(function ($file) {
+                $obj = YamlFrontMatter::parseFile($file);
+                return new Blog($obj->title, $obj->slug, $obj->intro, $obj->body());
+            });
+        // return array_map(function ($file){
+        //     $obj = YamlFrontMatter::parseFile($file);
+        //     return new Blog($obj->title, $obj->slug, $obj->intro, $obj->body());
+        // }, $files);
     }
 
     public static function find($slug)
     {
-        // $path = __DIR__."/../resources/blogger/$slug.html";
-        $path = resource_path("blogger/$slug.html");
-        if (!file_exists($path)) {
-            return redirect('/');
-        }
+        $blogs = static::all();
+        return ($blogs->firstWhere('slug',$slug));
+        // $path = resource_path("blogger/$slug.html");
+        // if (!file_exists($path)) {
+        //     return redirect('/');
+        // }
 
-        return cache()->remember('posts.$slug', now()->addSecond(5), function () use ($path) {
-            return file_get_contents($path);
-        });
+        // return cache()->remember('posts.$slug', now()->addSecond(5), function () use ($path) {
+        //     return file_get_contents($path);
+        // });
     }
+
+
 }
