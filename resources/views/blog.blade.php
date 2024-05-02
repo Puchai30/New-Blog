@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/app.css">
-    <title>Blog</title>
-</head>
+@section('title')
+    <title>{{ $blogeer->title }}</title>
+@endsection
 
-<body>
-
+@section('content')
     <h1>{{ $blogeer->title }}</h1>
+    @if (true)
+        <h4>This is Condition</h4>
+    @endif
     <p>published at{{ $blogeer->date }}</p>
+
     <body>
         {{ $blogeer->body }}
     </body>
 
     <hr>
     <a href="/">go back</a>
-</body>
-
-</html>
+@endsection
