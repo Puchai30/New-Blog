@@ -8,20 +8,16 @@
 
 
     <x-slot name="title">
-        <title>{{ $blogeer->title }}</title>
+        <title>{{ $blogger->title }}</title>
     </x-slot>
 
     <x-slot name="content">
-        <h1>{{ $blogeer->title }}</h1>
+        <h1>{{ $blogger->title }}</h1>
 
-        @if (true)
-            <h4>This is Condition</h4>
-        @endif
-
-        <p>published at - {{ $blogeer->created_at->diffForHumans() }}</p>
+        <p>published at - {{ $blogger->created_at->diffForHumans() }}</p>
 
         <body>
-            {{ $blogeer->body }}
+            {{ $blogger->body }}
         </body>
 
         <hr>

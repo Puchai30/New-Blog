@@ -12,8 +12,12 @@
 
     <x-slot name="content">
         @foreach ($blogs as $blog)
-            <div class={{ $loop->odd ? 'bg-color' : '' }}>
-                <h1><a href="blog/{{ $blog->id }}">{{ $blog->title }}</a></h1>
+
+                <h1><a href="blog/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
+
+                <p>
+                    <a href="category/{{ $blog->category->slug }}">{{ $blog->category->name }}</a>
+                </p>
 
                 <div>
                     <p>published at - {{ $blog->created_at->diffForHumans() }}</p>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('blogs',[
@@ -9,14 +11,21 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blog/{id} ', function (Blog $id) {
+Route::get('/blog/{blog:slug} ', function (Blog $blog) {
     return view('blog',[
-        'blogeer' => $id
+        'blogger' => $blog
     ]);
-})->where('blogeer','[A-z\0-9\-_]+');
+})->where('blogger','[A-z\0-9\-_]+');
 
 // Route::get('/blog/{id} ', function ($id) {
 //     return view('blog',[
 //         'blogeer' => Blog::findorFail($id)
 //     ]);
 // })->where('blogeer','[A-z\0-9\-_]+');
+
+Route::get('/category/{category:slug}',function(Category $category){
+    return view('blogs',[
+        'blogs' => $category->blog
+    ]);
+
+});
