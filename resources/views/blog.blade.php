@@ -1,20 +1,33 @@
-@extends('layout')
-
+{{-- @extends('layout')
 @section('title')
     <title>{{ $blogeer->title }}</title>
 @endsection
+@section('content') --}}
 
-@section('content')
-    <h1>{{ $blogeer->title }}</h1>
-    @if (true)
-        <h4>This is Condition</h4>
-    @endif
-    <p>published at{{ $blogeer->date }}</p>
+<x-layout>
 
-    <body>
-        {{ $blogeer->body }}
-    </body>
+    <x-slot name="title">
+        <title>{{ $blogeer->title }}</title>
+    </x-slot>
 
-    <hr>
-    <a href="/">go back</a>
-@endsection
+
+    <x-slot name="content">
+        <h1>{{ $blogeer->title }}</h1>
+        @if (true)
+            <h4>This is Condition</h4>
+        @endif
+        <p>published at{{ $blogeer->date }}</p>
+
+        <body>
+            {{ $blogeer->body }}
+        </body>
+
+        <hr>
+        <a href="/">go back</a>
+
+    </x-slot>
+</x-layout>
+
+
+
+{{-- @endsection --}}

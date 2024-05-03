@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
-    @yield('title')
+    {{-- @yield('title') --}}
+    {{ $title }}
 </head>
 
 <style>
@@ -17,12 +18,10 @@
 
 <body>
 
-    <nav>
-        <li><a href="">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Contact</a></li>
-    </nav>
-    @yield('content')
+    {{-- @yield('content') --}}
+    <x-navbar></x-navbar>
+    <x-blogger></x-blogger>
+    {{ $content }}
 </body>
 
 </html>
