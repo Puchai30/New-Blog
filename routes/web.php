@@ -4,17 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
 
 Route::get('/', function () {
-    $blogs = Blog::all();
     return view('blogs',[
-        'blogs' => $blogs
+        'blogs' => Blog::all()
     ]);
 });
 
-Route::get('/blog/{blog} ', function ($slug) {
-    $blog  = Blog::findorFail($slug);
+Route::get('/blog/{id} ', function (Blog $id) {
     return view('blog',[
-        'blogeer' => $blog
+        'blogeer' => $id
     ]);
 })->where('blogeer','[A-z\0-9\-_]+');
 
-
+// Route::get('/blog/{id} ', function ($id) {
+//     return view('blog',[
+//         'blogeer' => Blog::findorFail($id)
+//     ]);
+// })->where('blogeer','[A-z\0-9\-_]+');

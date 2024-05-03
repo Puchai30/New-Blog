@@ -18,7 +18,7 @@
             <h4>This is Condition</h4>
         @endif
 
-        <p>published at{{ $blogeer->date }}</p>
+        <p>published at - {{ $blogeer->created_at->diffForHumans() }}</p>
 
         <body>
             {{ $blogeer->body }}
