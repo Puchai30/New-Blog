@@ -6,16 +6,18 @@
 
 <x-layout>
 
+
     <x-slot name="title">
         <title>{{ $blogeer->title }}</title>
     </x-slot>
 
-
     <x-slot name="content">
         <h1>{{ $blogeer->title }}</h1>
+
         @if (true)
             <h4>This is Condition</h4>
         @endif
+
         <p>published at{{ $blogeer->date }}</p>
 
         <body>

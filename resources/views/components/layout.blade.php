@@ -20,7 +20,7 @@
 
     {{-- @yield('content') --}}
     <x-navbar></x-navbar>
-    <x-blogger></x-blogger>
+
     {{ $content }}
 </body>
 
