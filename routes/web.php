@@ -6,8 +6,11 @@ use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
+    // DB::listen(function($query){
+    //     logger($query->sql);
+    // });
     return view('blogs',[
-        'blogs' => Blog::all()
+        'blogs' => Blog::with('category')->get()
     ]);
 });
 
