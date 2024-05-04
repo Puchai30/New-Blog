@@ -1,33 +1,18 @@
-{{-- @extends('layout')
-
-@section('title')
-    <title>All Blog</title>
-@endsection
-@section('content') --}}
-
 <x-layout>
-    <x-slot name="title">
-        <title>All Blog</title>
-    </x-slot>
 
-    <x-slot name="content">
-        @foreach ($blogs as $blog)
+    <!-- navbar -->
+    <x-navbar></x-navbar>
 
-                <h1><a href="blog/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
+    <!-- hero section -->
+    <x-hero></x-hero>
 
-                <h4>Author - <a href="user/{{ $blog->author->username}}">{{ $blog->author->name }}</a></h4>
+    <!-- blogs section -->
+    <x-blog-section></x-blog-section>
 
-                <p>
-                    <a href="category/{{ $blog->category->slug }}">{{ $blog->category->name }}</a>
-                </p>
+    <!-- subscribe new blogs -->
+    <x-subscribe></x-subscribe>
 
-                <div>
-                    <p>published at - {{ $blog->created_at->diffForHumans() }}</p>
-                    <p>{{ $blog->intro }}</p>
-                </div>
-            </div>
-        @endforeach
+    <!-- footer -->
+    <x-footer></x-footer>
 
-    </x-slot>
 </x-layout>
-{{-- @endsection --}}
