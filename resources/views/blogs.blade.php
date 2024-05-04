@@ -15,6 +15,8 @@
 
                 <h1><a href="blog/{{ $blog->slug }}">{{ $blog->title }}</a></h1>
 
+                <h4>Author - <a href="user/{{ $blog->author->username}}">{{ $blog->author->name }}</a></h4>
+
                 <p>
                     <a href="category/{{ $blog->category->slug }}">{{ $blog->category->name }}</a>
                 </p>
@@ -28,5 +30,4 @@
 
     </x-slot>
 </x-layout>
-
 {{-- @endsection --}}

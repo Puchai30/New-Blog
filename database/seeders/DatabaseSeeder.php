@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Blog;
+use Database\Factories\CategoryFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,41 +20,21 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Blog::truncate();
 
-        User::factory(10)->create();
+        $frontend=Category::factory()->create([
+            'name' =>'Frontend','slug' => 'front-end'
+        ]);
+
+        $backend=Category::factory()->create([
+            'name' =>'Backend','slug' => 'back-end'
+        ]);
+
+        Blog::factory(2)->create(['category_id'=>$frontend->id]);
+        Blog::factory(2)->create(['category_id'=>$backend->id]);
 
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        $frontend = Category::create([
-            'name' => 'frontend',
-            'slug' => 'front_end'
-        ]);
-
-        $backend = Category::create([
-            'name' => 'backend',
-            'slug' => 'back_end'
-        ]);
-
-        Blog::create([
-            'title' => 'Frontend Post',
-            'slug' => 'frontend_post',
-            'intro' => 'Need a moment',
-            'body' => 'Keep all your selections
-            by saving this device to Your Saves, then come back
-            anytime and pick up right where you left off.',
-            'category_id' => $frontend->id
-        ]);
-
-        Blog::create([
-            'title' => 'backend Post',
-            'slug' => 'backend_post',
-            'intro' => 'Need a moment',
-            'body' => 'Keep all your selections
-            by saving this device to Your Saves, then come back
-            anytime and pick up right where you left off.',
-            'category_id' => $backend->id
-        ]);
     }
 }
