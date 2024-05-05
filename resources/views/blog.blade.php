@@ -1,31 +1,12 @@
-{{-- @extends('layout')
-@section('title')
-    <title>{{ $blogeer->title }}</title>
-@endsection
-@section('content') --}}
 
 <x-layout>
 
+    <!-- single blog section -->
+    <x-single-blog-section :blogger="$blogger"></x-single-blog-section>
 
-    <x-slot name="title">
-        <title>{{ $blogger->title }}</title>
-    </x-slot>
+    <!-- subscribe new blogs -->
+    <x-subscribe></x-subscribe>
 
-    <x-slot name="content">
-        <h1>{{ $blogger->title }}</h1>
+    <x-blogs-you-may-like :randomBlogs="$randomBlogs"></x-blogs-you-may-like>
 
-        <p>published at - {{ $blogger->created_at->diffForHumans() }}</p>
-
-        <body>
-            {{ $blogger->body }}
-        </body>
-
-        <hr>
-        <a href="/">go back</a>
-
-    </x-slot>
 </x-layout>
-
-
-
-{{-- @endsection --}}
