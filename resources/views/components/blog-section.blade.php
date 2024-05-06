@@ -22,9 +22,16 @@
             <option value="">Filter by Tag</option>
         </select> --}}
     </div>
-    <form action="" class="my-3">
+    <form action="/" class="my-3">
         <div class="input-group mb-3">
-            <input type="text" autocomplete="false" class="form-control" placeholder="Search Blogs..." />
+            <input
+            name="search"
+            type="text"
+            value="{{ request('search') }}"
+            autocomplete="false"
+            class="form-control"
+            placeholder="Search Blogs..."
+            />
             <button class="input-group-text bg-primary text-light" id="basic-addon2" type="submit">
                 Search
             </button>
@@ -33,11 +40,13 @@
 
     <div class="row">
 
-        @foreach ( $blogs as $blog)
+        @forelse ( $blogs as $blog )
         <div class="col-md-4 mb-4">
             <x-blog-card :blog="$blog" ></x-blog-card>
         </div>
-        @endforeach
+        @empty
+            <p class="text-center">Not Found Blogs</p>
+        @endforelse
 
     </div>
 </section>

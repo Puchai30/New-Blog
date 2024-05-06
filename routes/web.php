@@ -9,8 +9,12 @@ Route::get('/', function () {
     // DB::listen(function($query){
     //     logger($query->sql);
     // });
+    $blogs=Blog::latest();
+    if(request('search')){
+        $blogs->where('title', 'LIKE', '%'.request('search').'%' );
+    }
     return view('blogs',[
-        'blogs' => Blog::latest()->get(),
+        'blogs' => $blogs->get(),
         'categories' => Category::all()
     ]);
 });
