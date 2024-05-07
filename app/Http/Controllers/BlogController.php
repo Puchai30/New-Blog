@@ -4,21 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\User;
 use App\Models\Category;
 
 class BlogController extends Controller
 {
     public function index()
     {
-        return view('blogs', [
-            'blogs' => Blog::latest()->filter(request(['search']))->get(),
-            'categories' => Category::all()
+        return view('blogs.index', [
+            'blogs' => Blog::latest()
+                ->filter(request(['search', 'category', 'username']))
+                ->paginate(6)
+                ->withQueryString(),
+
         ]);
     }
 
     public function show(Blog $blog)
     {
-        return view('blog', [
+        return view('blogs.show', [
             'blogger' => $blog,
             'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
         ]);

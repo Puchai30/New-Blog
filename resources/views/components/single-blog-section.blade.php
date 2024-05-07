@@ -5,9 +5,9 @@
                 class="card-img-top" alt="..." />
             <h3 class="my-3">{{ $blogger->title }}</h3>
             <p class="fs-6 text-secondary">
-                <a href="/user/{{ $blogger->author->username }}">{{ $blogger->author->name }}</a>
+                <a href="/?username={{ $blogger->author->username }}">{{ $blogger->author->name }}</a>
             <div class="tags my-3">
-                <a href="/category/{{ $blogger->category->slug }}"><span
+                <a href="/?category={{ $blogger->category->slug }}"><span
                         class="badge bg-primary">{{ $blogger->category->name }}</span></a>
             </div>
             <span>{{ $blogger->created_at->diffForHumans() }}</span>

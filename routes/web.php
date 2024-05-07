@@ -1,28 +1,23 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\User;
 
 Route::get('/', [BlogController::class, 'index']);
-
 Route::get('/blog/{blog:slug} ', [BlogController::class, 'show']);
 
-Route::get('/category/{category:slug}',function(Category $category){
-    return view('blogs',[
-        'blogs' => $category->blog,
-        'categories' => Category::all(),
-        'currentCategory' => $category
-    ]);
-});
+Route::get('/register ', [AuthController::class, 'create'])->middleware('guest');
+Route::post('/register ', [AuthController::class, 'store'])->middleware('guest');
+Route::post('/logout ', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::get('/user/{user:username}',function(User $user){
-    return view('blogs',[
-        'blogs' => $user->blog,
-        'categories' => Category::all()
-    ]);
-});
+Route::get('/login ', [AuthController::class, 'login'])->middleware('guest');
+Route::post('/login ', [AuthController::class, 'postLogin'])->middleware('guest');
+
+
+
+
 
 
