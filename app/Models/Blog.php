@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'into', 'body'];
+    protected $fillable = ['title', 'slug', 'into', 'body','category_id', 'user_id'];
 
-    protected $with = ['category', 'author'];
+    protected $with = ['category', 'author',];
 
     public function scopeFilter($blog_query, $filter) // Blog::latest()->filter()
     {
@@ -49,4 +50,10 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

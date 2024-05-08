@@ -12,8 +12,4 @@
     :blogs="$blogs">
     </x-blog-section>
 
-    <!-- subscribe new blogs -->
-    <x-subscribe></x-subscribe>
-
-
 </x-layout>

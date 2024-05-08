@@ -6,6 +6,8 @@
             <a href="/#blogs" class="nav-link">Blogs</a>
 
             @auth
+                <img src="{{ auth()->user()->avator }}" width="35" height="35" class="rounded-circle">
+
                 <a href="" class="nav-link">Welcome {{ auth()->user()->name }}</a>
 
                 <form method="post" action="/logout">

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'avator'
     ];
 
     /**
@@ -51,6 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blog::class);
     }
+
+
+
 
     public function getNameAttribute($value)
     {
