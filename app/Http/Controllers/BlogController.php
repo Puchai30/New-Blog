@@ -28,14 +28,4 @@ class BlogController extends Controller
         ]);
     }
 
-    // protected function getBlogs()
-    // {
-    //     return Blog::latest()->filter()->get();
-    //     // if (request('search')) {
-    //     //     $blogs->where('title', 'LIKE', '%' . request('search') . '%')
-    //     //         ->orWhere('body', 'LIKE', '%' . request('search') . '%');
-    //     // }
-    //     // return $blogs->get();
-
-    // }
 }

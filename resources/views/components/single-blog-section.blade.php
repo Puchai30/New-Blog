@@ -12,7 +12,22 @@
                 <a href="/?category={{ $blogger->category->slug }}"><span
                         class="badge bg-primary">{{ $blogger->category->name }}</span></a>
             </div>
-            <span>{{ $blogger->created_at->diffForHumans() }}</span>
+
+            <div class="text-secondary">{{ $blogger->created_at->diffForHumans() }}</div>
+
+            <div class="text-secondary">
+                <form action="/blog/{{ $blogger->slug }}/subscribe" method="POST">
+                    @csrf
+                    @auth
+                    @if (auth()->user()->isSubsribed($blogger))
+                        <button class="btn btn-danger">unsubscribe</button>
+                    @else
+                        <button class="btn btn-warning">subscribe</button>
+                    @endif
+                    @endauth
+
+                </form>
+            </div>
 
             </p>
             <p class="lh-md">

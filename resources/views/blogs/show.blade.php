@@ -15,7 +15,7 @@
 
 
     @if ($blogger->comments->count())
-    <x-comments :comments="$blogger->comments"></x-comments>
+    <x-comments :comments="$blogger->comments()->latest()->paginate(3)"></x-comments>
     @endif
 
     <x-blogs-you-may-like :randomBlogs="$randomBlogs"></x-blogs-you-may-like>

@@ -53,7 +53,16 @@ class User extends Authenticatable
         return $this->hasMany(Blog::class);
     }
 
+    public function subscribedBlogs()
+    {
+        return $this->belongsToMany(Blog::class);
+    }
 
+    public function isSubsribed($blogger)
+    {
+        return auth()->user()->subscribedBlogs && auth()->user()->subscribedBlogs
+            ->contains('id', $blogger->id);
+    }
 
 
     public function getNameAttribute($value)
@@ -63,7 +72,6 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password']=bcrypt($value);
+        $this->attributes['password'] = bcrypt($value);
     }
-
 }
