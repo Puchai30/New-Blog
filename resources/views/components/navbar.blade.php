@@ -6,6 +6,10 @@
             <a href="/#blogs" class="nav-link">Blogs</a>
 
             @auth
+                {{-- @can('admin') --}}
+                    <a href="/admin/blogs" class="nav-link">Dashbloard</a>
+                {{-- @endcan --}}
+
                 <img src="{{ auth()->user()->avator }}" width="35" height="35" class="rounded-circle">
 
                 <a href="" class="nav-link">Welcome {{ auth()->user()->name }}</a>

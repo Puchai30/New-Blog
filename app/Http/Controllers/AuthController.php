@@ -52,7 +52,12 @@ class AuthController extends Controller
         ]);
 
         if (auth()->attempt($login_data)) {
-            return redirect('/')->with('success', 'Welcome back');
+
+            if (auth()->user()->is_admin) {
+                return redirect('/admin/blogs');
+            } else {
+                return redirect('/')->with('success', 'Welcome back');
+            }
         } else {
             return redirect()->back()->withErrors([
                 'password' => 'Incorrect Password'

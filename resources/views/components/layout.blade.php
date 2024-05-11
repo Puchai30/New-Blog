@@ -12,18 +12,32 @@
 
 <body id="home">
 
-     <!-- navbar -->
-     <x-navbar></x-navbar>
+    <!-- navbar -->
+    <x-navbar></x-navbar>
 
     {{ $slot }}
     <!-- footer -->
     <x-footer></x-footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('.editor'), {
+                // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(err => {
+                console.error(err.stack);
+            });
+    </script>
+
 </body>
 
 </html>
